@@ -12,14 +12,14 @@ def input_valid_number(progression_level="pass"):                               
 
 def check_valid_total(total):                                                   # this function will check whether total=120, takes one parameter-total.
     if(total==120):                                                             # if pass+defer+fail is equal to 120 then
-        progress_level = sort_progression_outcome(pass_cr,defer_cr,fail_cr)     # call sort_progression_outcome function to get the progression level,store it in progress_level.
+        progress_level = sort_progression_outcome(pass_cr,fail_cr)              # call sort_progression_outcome function to get the progression level,store it in progress_level.
         print(progress_level)                                                   # print the progress_level
     else:                                                                       # if total is not equal to 120 then
         print("Total incorrect")                                                # print total is incorrect
         main()                                                                  # takes user to the beginning of the program.
 
 
-def sort_progression_outcome(Pass,Defer,Fail):              # create a function which accepts three parameters Pass,Defer and Fail.This will sort out the progression level.
+def sort_progression_outcome(Pass,Fail):                    # create a function which accepts three parameters Pass,Defer and Fail.This will sort out the progression level.
     pro_out_1="Progress"                                    # set pro_out_1 to "Progress"
     pro_out_2="Progress (module trailer)"                   # set pro_out_2 to "Progress (module trailer)"
     pro_out_3="Do not Progress – module retriever"          # set pro_out_3 to "Do not Progress – module retriever"
@@ -30,30 +30,13 @@ def sort_progression_outcome(Pass,Defer,Fail):              # create a function 
     elif(Pass==100):                                        # if pass=100 then
         add_trailer()                                       # call add_trailer() function to increment number of students for progress(module trailer) category by 1.
         return pro_out_2                                    # return "Progress (module trailer)" to where the function called.
-    elif(Pass==80 or Pass==60):                             # if pass=80 or pass=60 then
-        add_retriever()                                     # call add_retriever() function to increment number of students for Do not Progress–module retriever category by 1.
+    elif(Fail>=80):                                         # if Fail value>=80 then
+        add_Exclude()                                       # call add_Exclude() function to increment number of students for Exclude category by 1.
+        return pro_out_4                                    # return "Exclude" to where the function called.
+    else:                                                   # else it should be surely "Do not Progress – module retriever"
+        add_retriever()                                     # call add_retriever() function to increment number of students for Do not Progress – module retriever category by 1.
         return pro_out_3                                    # return "Do not Progress – module retriever" to where the function called.
-    elif(Pass==40):                                         # if pass=40
-        if(Fail==80):                                       # if fail=80 then
-            add_Exclude()                                   # call add_Exclude() function to increment number of students for Exclude category by 1.
-            return pro_out_4                                # return "Exclude" to where the function called.
-        else:                                               # if pass=40 but fail not equal 80 then
-            add_retriever()                                 # call add_retriever() function to increment number of students for Do not Progress – module retriever category by 1.
-            return pro_out_3                                # return "Do not Progress – module retriever" to where the function called.
-    elif(Pass==20):                                         # if passs=20 then
-        if((Defer==20 and Fail==80)or(Fail==100)):          # if defer=20 and fail=80 or fail=100 then
-            add_Exclude()                                   # call add_Exclude() function to increment number of students for Exclude category by 1.
-            return pro_out_4                                # return "Exclude" to where the function called.
-        else:                                               # if the condition((defer=20 and fail=80) or fail=100) above makes False then
-            add_retriever()                                 # call add_retriever() function to increment number of students for Do not Progress – module retriever category by 1.
-            return pro_out_3                                # return "Do not Progress – module retriever" to where the function called.
-    elif(Pass==0):                                                             # if pass=0 then
-        if((Defer==40 and Fail==80)or(Defer==20 and Fail==100)or(Fail==120)):  # if (Defer==40 and Fail==80)or(Defer==20 and Fail==100)or(Fail==120) then
-            add_Exclude()                                                      # call add_Exclude() function to increment number of students for Exclude category by 1.
-            return pro_out_4                                                   # return "Exclude" to where the function called.
-        else:                                                                  # if the condition is not true then
-            add_retriever()                                                    # call add_retriever() function to increment number of students for Do not Progress – module retriever category by 1.
-            return pro_out_3                                                   # return "Do not Progress – module retriever" to where the function called.
+
 def main():                                                       # create a main function to handle main tasks in the program.
     global pass_cr,defer_cr,fail_cr                               # make those vaiables in global scope because we want to access this variables in check_valid_total function.
     pass_cr=input_valid_number("pass")                            # call the input_valid_number function with argument"pass" and store the returned value in pass_cr.
