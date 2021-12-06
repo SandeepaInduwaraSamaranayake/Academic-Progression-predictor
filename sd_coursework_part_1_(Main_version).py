@@ -25,7 +25,7 @@ def check_valid_total(total):                                                   
 def sort_progression_outcome(Pass,Fail):
     pro_out_1="Progress"                                    # set pro_out_1 to "Progress"
     pro_out_2="Progress (module trailer)"                   # set pro_out_2 to "Progress (module trailer)"
-    pro_out_3="Do not Progress – module retriever"          # set pro_out_3 to "Do not Progress – module retriever"
+    pro_out_3="Module retriever"                            # set pro_out_3 to "Module retriever"
     pro_out_4="Exclude"                                     # set pro_out_4 to "Exclude"
     if(Pass==120):                                          # if pass=120 then
         return pro_out_1                                    # return "Progress" to where the function called.

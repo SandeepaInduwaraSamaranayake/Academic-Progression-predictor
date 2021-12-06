@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# I declare that my work contains no examples of misconduct, such as plagiarism, or collusion.
+# Any code taken from other sources is referenced within my code solution.
+# Student ID:20210302        Date: 2021/12/05
 def input_valid_number(progression_level="pass"):                                          # create a function(input_valid_number) which accepts one parameter(default=pass)
     while True:                                                                            # create an infinite loop(Run forever untill return usr_respond to main() function)
         try:                                                                               # start a try block because we have to handle exceptions when user enter invalid values
@@ -22,7 +25,7 @@ def check_valid_total(total):                                                   
 def sort_progression_outcome(Pass,Fail):                    # create a function which accepts three parameters Pass,Defer and Fail.This will sort out the progression level.
     pro_out_1="Progress"                                    # set pro_out_1 to "Progress"
     pro_out_2="Progress (module trailer)"                   # set pro_out_2 to "Progress (module trailer)"
-    pro_out_3="Do not Progress – module retriever"          # set pro_out_3 to "Do not Progress – module retriever"
+    pro_out_3="Module retriever"                            # set pro_out_3 to "Module retriever"
     pro_out_4="Exclude"                                     # set pro_out_4 to "Exclude"
     if(Pass==120):                                          # if pass=120 then
         add_progress()                                      # call add_progress() function to increment number of students for progress category by 1.
