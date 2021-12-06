@@ -13,22 +13,14 @@ def input_valid_number(progression_level="pass"):                               
         except ValueError:                                                                 # if ValueError occured in the line which we take user's input then
             print("Integer required")                                                      # print "need an Integer"
 
-progression_data=[]                                                             # related to part 3(use a list to save all progression data).Create an empty list.
-def insert_to_the_list(progress_level,pass_cr,defer_cr,fail_cr):                # Part 3 | extend the program with list.This function will save the progression data to a list.
-    progression_data.append([progress_level,pass_cr,defer_cr,fail_cr])          # at the end of the progression_data list, append the data we get from user.so progression_data is a nested list.
-
-def display_progression_data():                                                 # this function will simply print all the progression data in the progression_data list.
-    for data_set in progression_data:                                           # get element(also a list) by element(also a list) from progression_data using enhanced for loop.
-        print(data_set[0],"-",data_set[1],",",data_set[2],",",data_set[3])      # print the
-
 def check_valid_total(total):                                                   # this function will check whether total=120, takes one parameter-total.
     if(total==120):                                                             # if pass+defer+fail is equal to 120 then
         progress_level = sort_progression_outcome(pass_cr,fail_cr)              # call sort_progression_outcome function to get the progression level,store it in progress_level.
         print(progress_level)                                                   # print the progress_level
-        insert_to_the_list(progress_level,pass_cr,defer_cr,fail_cr)             # all validations finished! call insert_to_the_list() function to save the input progression data to a list.
     else:                                                                       # if total is not equal to 120 then
         print("Total incorrect")                                                # print total is incorrect
         main()                                                                  # takes user to the beginning of the program.
+
 
 def sort_progression_outcome(Pass,Fail):                    # create a function which accepts three parameters Pass,Defer and Fail.This will sort out the progression level.
     pro_out_1="Progress"                                    # set pro_out_1 to "Progress"
@@ -70,44 +62,12 @@ def add_Exclude():           # create a function to increment excluded by 1.
     global excluded          # We use global keyword to read and write excluded global variable inside the add_Exclude() function.
     excluded+=1              # Increment excluded by 1.(Inside a function we can only ,access global variables,but can't modify global variables without global keyword.)
 
-def draw_histogram_horizontal():                                                                                  # crate a function to draw the horizontal histogram.
-    print("________________________________________________________________________\nHorizontal Histogram\n ")    # print title
+def draw_histogram():                                                                                             # crate a function to draw the histogram.
+    print("________________________________________________________________________\nHorizontal Histogram ")      # print title
     print(f"Progress  {progress} : "+"*"*progress)                                                                # print progress category student's count.
     print(f"Trailer   {trailer} : "+"*"*trailer)                                                                  # print trailer  category student's count.
     print(f"Retriever {retriever} : "+"*"*retriever)                                                              # print retriever category student's count.
     print(f"Excluded  {excluded} : "+"*"*excluded)                                                                # print excluded category student's count.
-    print(f"\n{sum([progress, trailer, retriever, excluded])} outcomes in total")                                 # print total no of students.
-
-def draw_histogram_vertical():                                                                                               # crate a function to draw the vertical histogram.
-    print("________________________________________________________________________\nVertical Histogram\n")                  # print title
-    titles=["Progress","Trailer","Retriever","Excluded"]                # store progress outcomes in a list named titles.
-    data=[progress,trailer,retriever,excluded]                          # store progress outcome data in a list named data(no of students belong to each category)
-    print(f"{titles[0]:<12}{titles[1]:<11}{titles[2]:<13}{titles[3]}")  # print head titles in the vertical histogram.
-
-    def print_star(space):                                              # This print_star() function will print the stars when call this function.(a nested function)
-        print(f"{'*':>{space}}",end='')                                 # And hold the cursor in same line
-
-    def print_space(space):                                             # This print_space() function will print spaces when call this function.(a nested function)
-        print(f"{' ':>{space}}",end='')                                 # And hold the cursor in the same line
-
-    def stars():                                                        # This function will handle the number of spaces between two stars and finally call the print_star function(a nested function)
-        indentation=[5,11,12,12]                                        # This is the list of no of spaces we are going to place between stars.
-        for j in range(4):                                              # create a for loop to check which category this related to and decide indentation length according toit.
-            if(i==j):                                                   # if catogery index(i) equals to j(0-3).
-                print_star(indentation[j])                              # set the space value as parameter and call the print_star function.
-    def space():                                                        # This function will handle the number of spaces between two spaces and finally call the print_star functio(a nested function)
-        indentation=[5,11,12,12]                                        # This is the list of no of spaces we are going to place between spaces.
-        for j in range(4):                                              # for loop to check which category this related to and decide indentation length according toit
-            if(i==j):                                                   # if catogery index(i) equals to j(0-3).
-                print_space(indentation[j])                             # set the space value as parameter and call the print_space function.
-
-    for line in range(1,max(data)+1):                                   # This for loop will basically handle the process of printing line by line.
-        for i in range(4):                                              # This for loop will handle the printing according to the categories like progress,trailer and so on.
-            if(data[i]>=line):                                          # check if each category(progress,trailing...) value is greater than or equal to line number.
-                stars()                                                 # if yes then call stars() function to print stars.
-            else:                                                       # if category(progress,trailing...) value is less than to line number.
-                space()                                                 # call space() function to print space.
-        print("\n")                                                     # after printing stars & spaces for all four categories goto next line and next iteration will happen.
     print(f"\n{sum([progress,trailer,retriever,excluded])} outcomes in total\n________________________________________________________________________") # print total no of students.
 
 
@@ -121,14 +81,14 @@ while True:                                                       # infinite whi
         print("")                                                 # if yes then print a blank line to seperate it from previous content,
         continue                                                  # and go to the beginning of the loop to continue normal procedure again.
     elif(usr_option.lower()=="q"):                                # check the lower case of user's input is equal to "q"
-        draw_histogram_horizontal()                               # if yes then call draw_histogram_horizontal() function to draw the horizontal histogram.
-        draw_histogram_vertical()                                 # call draw_histogram_vertical() function to draw the vertical histogram.
+        draw_histogram()                                          # if yes then call draw_histogram() function to
         break                                                     # break the loop and stop the program after drawing histogram.
     else:                                                         # if user inputs anything other than y or q.
         print("Not a valid option")                               # print not a valid option.
         break                                                     # break the while loop.
 
-display_progression_data()
+
+
 
 
 

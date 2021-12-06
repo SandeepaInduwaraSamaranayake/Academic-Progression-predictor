@@ -94,7 +94,7 @@ def draw_histogram_horizontal():                                                
     print(f"\n{sum([progress, trailer, retriever, excluded])} outcomes in total")                                 # print total no of students.
 
 def draw_histogram_vertical():                                                                                   # crate a function to draw the vertical histogram.
-    print("________________________________________________________________________\nVerticle Histogram(List extension with Text file )\n")    # print title
+    print("________________________________________________________________________\nVertical Histogram\n")      # print title
     titles=["Progress","Trailer","Retriever","Excluded"]                # store progress outcomes in a list named titles.
     data=[progress,trailer,retriever,excluded]                          # store progress outcome data in a list named data(no of students belong to each category)
     print(f"{titles[0]:<12}{titles[1]:<11}{titles[2]:<13}{titles[3]}")  # print head titles in the vertical histogram.
