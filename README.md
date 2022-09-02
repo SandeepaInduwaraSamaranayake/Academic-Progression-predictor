@@ -2,7 +2,7 @@
 This is a python program to predict progression outcomes at the end of each academic year <br><br> 
 Progression outcomes as defined by the University regulations.<br>
 
-###Volume of Credit at Each Level                          Progression Outcome 
+### Volume of Credit at Each Level                          Progression Outcome<br>
    Pass    Defer      Fail 
 1   120 0 0 Progress 
 2 100 20 0 Progress (module trailer) 
